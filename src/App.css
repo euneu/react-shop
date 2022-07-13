@@ -9,6 +9,14 @@
   background-position: center;
 }
 
+.fadeStart {
+  opacity: 0;
+}
+.fadeEnd {
+  opacity: 1;
+  transition: all 1s;
+}
+
 /* .Link {
   color: rgba(238, 238, 238, 0.5);
   margin-right: 10px;
