@@ -5,6 +5,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail";
 import Home from "./routes/Home";
+import Cart from "./components/Cart";
 
 function App() {
   let [shoes, setShoses] = useState(data);
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home shoes={shoes} />}></Route>
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route path="/cart" element={<Cart />}></Route>
         <Route path="*" element={<h2>Error</h2>} />
         <Route path="/event" element={<Event />}>
           <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>} />
