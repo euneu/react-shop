@@ -2,6 +2,7 @@
 
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import user from "./store/userSlice";
+import product from "./store/productSlice";
 //컴포넌트 간 state 공유가 편해져서 씀!
 
 //useState와 비슷한 역할
@@ -20,14 +21,6 @@ import user from "./store/userSlice";
 //     },
 //   },
 // });
-
-let product = createSlice({
-  name: "product",
-  initialState: [
-    { id: 1, name: "White and Black", count: 2 },
-    { id: 2, name: "Grey Yordan", count: 1 },
-  ],
-});
 
 export default configureStore({
   reducer: {

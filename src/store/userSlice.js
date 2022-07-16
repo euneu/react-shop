@@ -8,8 +8,8 @@ let user = createSlice({
     nameChange(state) {
       state.name = "park";
     },
-    ageChange(state, a) {
-      state.age += a.payload;
+    ageChange(state) {
+      state.age += 1;
     },
   },
 });

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { InputGroup, Form, Button } from "react-bootstrap";
+import { addProduct } from "../store/productSlice";
 
 function Detail({ shoes }) {
   let { id } = useParams();
@@ -8,6 +10,7 @@ function Detail({ shoes }) {
   const [product, setProduct] = useState(0);
   let shoesFind = shoes.find((x) => x.id == id);
   let [fade, setFade] = useState("");
+  let dispatch = useDispatch();
 
   const onChange = (e) => {
     setProduct(e.target.value);
@@ -49,7 +52,9 @@ function Detail({ shoes }) {
       <div className="row">
         <div className="col-md-6">
           <img
-            src={`https://codingapple1.github.io/shop/shoes${shoesFind.id}.jpg`}
+            src={`https://codingapple1.github.io/shop/shoes${
+              shoesFind.id + 1
+            }.jpg`}
             width="100%"
           />
         </div>
@@ -63,7 +68,15 @@ function Detail({ shoes }) {
               value={product}
               placeholder="수량을 입력하세요"
             />
-            <Button variant="outline-secondary" id="button-addon2">
+            <Button
+              onClick={() => {
+                dispatch(
+                  addProduct({ id: id, name: shoesFind.title, count: product })
+                );
+              }}
+              variant="outline-secondary"
+              id="button-addon2"
+            >
               주문하기
             </Button>
           </InputGroup>
