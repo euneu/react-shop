@@ -12,6 +12,17 @@ function Detail({ shoes }) {
   let [fade, setFade] = useState("");
   let dispatch = useDispatch();
 
+  useEffect(() => {
+    let storageShoesId = localStorage.getItem("watched");
+    storageShoesId = JSON.parse(storageShoesId);
+    console.log(storageShoesId);
+    storageShoesId.push(shoesFind.id);
+    //중복제거하려고 set으로 변환후에 다시 array로
+    storageShoesId = new Set(storageShoesId);
+    storageShoesId = Array.from(storageShoesId);
+    localStorage.setItem("watched", JSON.stringify(storageShoesId));
+  }, []);
+
   const onChange = (e) => {
     setProduct(e.target.value);
   };
